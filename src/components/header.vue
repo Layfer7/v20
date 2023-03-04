@@ -1,9 +1,13 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted} from 'vue';
+import { Icon } from '@iconify/vue';
 import Navbar from './navbar.vue';
+import { api } from '../main.js';
 defineProps({
   msg: String,
 })
+
+
 
 const count = ref(0)
 </script>
@@ -34,14 +38,17 @@ const count = ref(0)
           </strong>
         </div>
         <div class="contacts">  
-          <div class="geolocation">
-            347922, Ростовская область,<br/> г. Таганрог,<br/> пер. Некрасовский, 73
+          <div class="geolocation c">
+            <Icon icon="ic:baseline-mode-of-travel" color="#c1170a" class="icon"/>
+            <div class="">347922, Ростовская область,<br/> г. Таганрог,<br/> пер. Некрасовский, 73</div>
           </div>
-          <div class="phone">
-            +7 (8634) 39-31-65
+          <div class="phone c">
+            <Icon icon="ic:baseline-call" color="#c1170a" class="icon"/>
+            <div class="text">+7 (8634) 39-31-65</div>
           </div>
-          <div class="mail">
-            sch8@tagobr.ru
+          <div class="mail c">
+            <Icon icon="ic:baseline-attach-email" color="#c1170a" class="icon" />
+            <div class="text">sch8@tagobr.ru</div>
           </div>
         </div>
     </div>
@@ -56,6 +63,7 @@ header{
   display:flex;
   flex-direction: column;
 }
+.icon{width: 30px;height: 30px;}
 .headerTop {
   width: 100%;
   height: 60px;
@@ -94,12 +102,12 @@ header{
   flex-direction: column;
   gap: 10px;
 }
-.contacts .geolocation{
+.contacts .c{
   display: flex;
+  flex-direction: row;
+  align-items: center;
 }
-.geolocation ::before{
-  content: "\f041";
-}
+
 nav{
   width: 100%;
   min-height: 60px;
